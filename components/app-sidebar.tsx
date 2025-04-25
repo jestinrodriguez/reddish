@@ -30,6 +30,7 @@ import {
 import Link from "next/link";
 import ReddishLogo from "@/images/Reddish Full.png";
 import Image from "next/image";
+import { getSubreddits } from "@/sanity/lib/subreddit/getSubreddits";
 
 type SidebarData = {
   navMain: {
@@ -43,30 +44,24 @@ type SidebarData = {
   }[];
 };
 
-const sidebarData = {
-  navMain: [
-    {
-      title: "Communities",
-      url: "#",
-      items: [
-        {
-          title: "Installation",
-          url: "#",
-          isActive: false,
-        },
-        {
-          title: "Project Structure",
-          url: "#",
-          isActive: false,
-        },
-      ],
-    },
-  ],
-};
+export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  // TODO: get all subreddits from sanity
-  // const subreddits = await getSubreddits();
+  const subreddits = await getSubreddits();
+
+  const sidebarData = {
+    navMain: [
+      {
+        title: "Communities",
+        url: "#",
+        items: subreddits?.map((subreddit) => ({
+          title: subreddit.title || "unknown",
+          url: `/community/${subreddit.slug}`,
+          isActive: false,
+        })) || [],
+      },
+    ],
+  };
+
   return (
     <Sidebar {...props}>
       <SidebarHeader>
@@ -141,7 +136,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                               asChild
                               isActive={item.isActive}
                             >
-                              <a href={item.url}>{item.title}</a>
+                              <Link href={item.url}>{item.title}</Link>
                             </SidebarMenuSubButton>
                           </SidebarMenuSubItem>
                         ))}
