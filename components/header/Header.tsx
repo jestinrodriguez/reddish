@@ -1,12 +1,12 @@
 "use client";
 
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
-import { Button } from "./button";
 import ReddishLogo from "@/images/Reddish Full.png";
 import ReddishLogoOnly from "@/images/Reddish Logo Only.png";
 import Image from "next/image";
 import { ChevronLeftIcon, MenuIcon } from "lucide-react";
-import { useSidebar } from "./sidebar";
+import { useSidebar } from "../ui/sidebar";
+import { Button } from "../ui/button";
 
 const Header = () => {
   const { toggleSidebar, open, isMobile } = useSidebar();
