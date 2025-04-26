@@ -7,8 +7,9 @@ import Image from "next/image";
 import { ChevronLeftIcon, MenuIcon } from "lucide-react";
 import { useSidebar } from "../ui/sidebar";
 import { Button } from "../ui/button";
+import CreatePost from "../post/CreatePost";
 
-const Header = () => {
+const Header = () => { 
   const { toggleSidebar, open, isMobile } = useSidebar();
 
   return (
@@ -38,7 +39,8 @@ const Header = () => {
         )}
       </div>
       {/* Right */}
-      <div>
+      <div className="flex items-center gap-2">
+        <CreatePost/>
         <SignedIn>
           <UserButton />
         </SignedIn>
