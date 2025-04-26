@@ -1,6 +1,7 @@
 import { getPosts } from '@/sanity/lib/post/getPosts';
 import { currentUser } from '@clerk/nextjs/server';
 import React from 'react'
+import Post from './Post';
 
 const PostsList = async () => {
     const posts = await getPosts();
