@@ -9,6 +9,7 @@ import { MessageSquare } from "lucide-react";
 import CommentInput from "../comment/CommentInput";
 import CommentsList from "../comment/CommentsList";
 import { GetAllPostsQueryResult } from "@/sanity.types";
+import PostVoteButtons from "./PostVoteButtons";
 
 interface PostProps {
   post: GetAllPostsQueryResult[number];
@@ -26,12 +27,12 @@ const Post = async ({ post, userId }: PostProps) => {
       className="relative bg-white rounded-md shadow-sm border border-gray-200 hover:border-gray-300 transition-colors"
     >
       <div className="flex">
-        {/* <PostVoteButtons
+        <PostVoteButtons
           contentId={post._id}
           votes={votes}
           vote={vote}
           contentType="post"
-        /> */}
+        />
         {/* Post Content */}
         <div className="flex-1 p-3">
           <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
