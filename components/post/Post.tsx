@@ -11,6 +11,7 @@ import CommentsList from "../comment/CommentsList";
 import { GetAllPostsQueryResult, GetPostsForSubredditQueryResult } from "@/sanity.types";
 import PostVoteButtons from "./PostVoteButtons";
 import ReportButton from "../ReportButton";
+import DeleteButton from "../DeleteButton";
 
 interface PostProps {
   post: GetAllPostsQueryResult[number] | GetPostsForSubredditQueryResult[number];
@@ -98,6 +99,13 @@ const Post = async ({ post, userId }: PostProps) => {
       <div className="absolute top-2 right-2">
         <div className="flex items-center gap-2">
           <ReportButton contentId={post._id}/>
+          {post.author?._id && (
+            <DeleteButton
+              contentOwnerId={post.author?._id}
+              contentId={post._id}
+              contentType="post"
+            />
+          )}
         </div>
       </div>
     </article>
