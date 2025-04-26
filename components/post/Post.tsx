@@ -8,11 +8,11 @@ import { urlFor } from "@/sanity/lib/image";
 import { MessageSquare } from "lucide-react";
 import CommentInput from "../comment/CommentInput";
 import CommentsList from "../comment/CommentsList";
-import { GetAllPostsQueryResult } from "@/sanity.types";
+import { GetAllPostsQueryResult, GetPostsForSubredditQueryResult } from "@/sanity.types";
 import PostVoteButtons from "./PostVoteButtons";
 
 interface PostProps {
-  post: GetAllPostsQueryResult[number];
+  post: GetAllPostsQueryResult[number] | GetPostsForSubredditQueryResult[number];
   userId: string | null;
 }
 
