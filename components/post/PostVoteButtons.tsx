@@ -1,7 +1,7 @@
 "use client";
 
-// import { downvote } from "@/action/downvote";
-// import { upvote } from "@/action/upvote";
+import { downvote } from "@/action/downvote";
+import { upvote } from "@/action/upvote";
 import {
   GetPostVotesQueryResult,
   GetUserPostVoteStatusQueryResult,
@@ -56,7 +56,7 @@ function PostVoteButtons({
     // Make the actual API call in transition
     startTransition(async () => {
       try {
-        // await upvote(contentId, contentType);
+        await upvote(contentId, contentType);
       } catch (error) {
         // If there's an error, revert the optimistic updates
         setOptimisticVote(vote);
@@ -91,7 +91,7 @@ function PostVoteButtons({
     // Make the actual API call in transition
     startTransition(async () => {
       try {
-        // await downvote(contentId, contentType);
+        await downvote(contentId, contentType);
       } catch (error) {
         // If there's an error, revert the optimistic updates
         setOptimisticVote(vote);
